@@ -1,0 +1,6 @@
+lib/*.js
+build/*.js
+src/assets
+public
+dist
+wh-boot
