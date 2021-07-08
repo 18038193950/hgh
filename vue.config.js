@@ -1,5 +1,7 @@
 module.exports = {
   publicPath: './',
-  css: { extract: false },
+  assetsDir: 'static',
+  lintOnSave: false,
+  css: { extract: false }
   // outputDir: ""
 }

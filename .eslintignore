@@ -1,6 +1,6 @@
 lib/*.js
 build/*.js
-src/assets
+src
 public
 dist
 wh-boot

@@ -74,6 +74,54 @@ export const constantRoutes = [
         path: '/example/menu',
         name: 'wh-whmenu',
         component: () => import('@/views/example/wh-menu')
+      },
+      {
+        meta: {
+          title: 'OpenUrl'
+        },
+        path: '/example/openurl',
+        name: 'wh-OpenUrl',
+        component: () => import('@/views/example/wh-openurl')
+      },
+      {
+        meta: {
+          title: 'Vue'
+        },
+        path: '/example/vue',
+        name: 'wh-vue',
+        component: () => import('@/views/example/wh-vue')
+      },
+      {
+        meta: {
+          title: 'Rules'
+        },
+        path: '/example/rules',
+        name: 'wh-vue',
+        component: () => import('@/views/example/wh-rules/index.vue')
+      },
+      {
+        meta: {
+          title: 'Js'
+        },
+        path: '/example/js',
+        name: 'wh-js',
+        component: () => import('@/views/example/wh-js')
+      },
+      {
+        meta: {
+          title: 'Request'
+        },
+        path: '/example/request',
+        name: 'wh-request',
+        component: () => import('@/views/example/wh-request')
+      },
+      {
+        meta: {
+          title: 'Css'
+        },
+        path: '/example/css',
+        name: 'wh-css',
+        component: () => import('@/views/example/wh-css')
       }
     ]
   }

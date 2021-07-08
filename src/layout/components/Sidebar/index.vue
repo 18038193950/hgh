@@ -27,17 +27,29 @@
           <el-menu-item index="drawer">抽屉</el-menu-item>
           <el-menu-item index="menu">菜单</el-menu-item>
         </el-submenu>
-        <el-menu-item index="2" disabled>
+        <el-menu-item index="openurl">
+            <i class="el-icon-menu" />
+            <span slot="title">前端相关文档链接</span>
+        </el-menu-item>
+        <el-menu-item index="vue">
           <i class="el-icon-menu" />
-          <span slot="title">导航二</span>
+          <span slot="title">vue</span>
         </el-menu-item>
-        <el-menu-item index="3" disabled>
+        <el-menu-item index="rules">
           <i class="el-icon-document" />
-          <span slot="title">导航三</span>
+          <span slot="title">正则</span>
         </el-menu-item>
-        <el-menu-item index="4" disabled>
+        <el-menu-item index="js">
           <i class="el-icon-setting" />
-          <span slot="title">导航四</span>
+          <span slot="title">js</span>
+        </el-menu-item>
+        <el-menu-item index="request">
+          <i class="el-icon-setting" />
+          <span slot="title">request</span>
+        </el-menu-item>
+        <el-menu-item index="css">
+          <i class="el-icon-setting" />
+          <span slot="title">css</span>
         </el-menu-item>
       </el-menu>
     </el-scrollbar>
