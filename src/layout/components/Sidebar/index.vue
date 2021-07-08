@@ -35,6 +35,10 @@
           <i class="el-icon-menu" />
           <span slot="title">vue</span>
         </el-menu-item>
+         <el-menu-item index="npm">
+          <i class="el-icon-menu" />
+          <span slot="title">npm</span>
+        </el-menu-item>
         <el-menu-item index="rules">
           <i class="el-icon-document" />
           <span slot="title">正则</span>

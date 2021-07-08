@@ -93,6 +93,14 @@ export const constantRoutes = [
       },
       {
         meta: {
+          title: 'Npm'
+        },
+        path: '/example/npm',
+        name: 'wh-npm',
+        component: () => import('@/views/example/wh-npm')
+      },
+      {
+        meta: {
           title: 'Rules'
         },
         path: '/example/rules',

@@ -251,6 +251,20 @@
                 </code>
          </pre>
       </el-collapse-item>
+      <el-collapse-item title="金额添加千分位" name="12">
+        <pre v-highlight>
+                <code class="js">
+                 const comdify = function(e) {
+                    if (!e) return e
+                    const n = e.toString()
+                    const str = n.split('.')
+                    const re = /\d{1,3}(?=(\d{3})+$)/g
+                    const n1 = str[0].replace(re, '$&,')
+                    return str.length > 1 && str[1] ? `${n1}.${str[1]}` : `${n1}.00`
+                  }
+                </code>
+         </pre>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>

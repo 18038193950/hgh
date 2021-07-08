@@ -1,0 +1,209 @@
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+  
+	# 主项目	
+    server {
+		# 使用单点登录（走gateway） 西海FAT专用端口
+        listen       8080;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+        #root  file:///Users/air/Desktop/dist/;
+		#TODO:设置本节中的root到应用所在目录	
+                 add_header Access-Control-Allow-Origin *;
+                 add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+                 add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+            location / {	
+                 root /Users/air/Desktop/main;
+                 index  index.html index.htm index.php;
+                 try_files $uri $uri/ /index.html;
+                
+
+           }
+        
+            location /policy-product-web {
+               proxy_pass http://39.100.249.6;
+            }
+
+	}
+
+     
+    
+     #qy-api
+     server {
+		# 使用单点登录（走gateway） 西海FAT专用端口
+        listen       9528;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+        #root  file:///Users/air/Desktop/dist/;
+		#TODO:设置本节中的root到应用所在目录	
+                 add_header Access-Control-Allow-Origin *;
+                 add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+                 add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+            location / {	
+                 root /Users/air/Desktop/main/qy-api;
+                 index  index.html index.htm index.php;
+                 try_files $uri $uri/ /index.html;
+                
+
+           }
+           location ^~/qy-api {
+                alias   /Users/air/Desktop/main/qy-api;
+                try_files $uri $uri/ /index.html;
+            }
+        
+            location /policy-product-web {
+               proxy_pass http://xxxx;
+            }
+
+	}
+
+
+   #auth-api
+    server {
+		# 使用单点登录（走gateway） 西海FAT专用端口
+        listen       9529;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+		#TODO:设置本节中的root到应用所在目录	
+                 add_header Access-Control-Allow-Origin *;
+                 add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+                 add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+            location / {	
+                 root /Users/air/Desktop/main/auth-api;
+                 index  index.html index.htm index.php;
+                 try_files $uri $uri/ /index.html;
+                
+
+           } 
+           location ^~/auth-api {
+                alias   /Users/air/Desktop/main/auth-api;
+                try_files $uri $uri/ /index.html;
+           }
+        
+            location /policy-product-web {
+               proxy_pass http://xxxx;
+            }
+
+	}
+
+
+  
+    #system
+   server {
+		# 使用单点登录（走gateway） 西海FAT专用端口
+        listen       9526;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+        #root  file:///Users/air/Desktop/dist/;
+		#TODO:设置本节中的root到应用所在目录	
+                 add_header Access-Control-Allow-Origin *;
+                 add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+                 add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+            location / {	
+                 root /Users/air/Desktop/main/system;
+                 index  index.html index.htm index.php;
+                 try_files $uri $uri/ /index.html;
+                
+
+           }  
+           
+           location ^~/system {
+                alias   /Users/air/Desktop/main/system;
+                try_files $uri $uri/ /index.html;
+            }
+        
+            location /policy-product-web {
+               proxy_pass http://xxxx;
+            }
+
+	}
+
+
+}
+	
+	
+
+
+
+
+#######
+
+location / {	
+	 root /www/wwwroot/baidu.do4u.com.cn;
+	 index  index.html index.htm index.php;
+	 try_files $uri $uri/ /index.html;
+}
+
+location ^~/qy-api {
+	alias   /www/wwwroot/baidu.do4u.com.cn/qy-api;
+	try_files $uri $uri/ /index.html;
+}
+
+location ^~/auth-api {
+	 alias   /www/wwwroot/baidu.do4u.com.cn/auth-api;
+	 try_files $uri $uri/ /index.html;
+}
+
+location ^~/system {
+	 alias   /www/wwwroot/baidu.do4u.com.cn/system;
+	 try_files $uri $uri/ /index.html;
+}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
