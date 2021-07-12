@@ -1,6 +1,0 @@
-lib/*.js
-build/*.js
-src
-public
-dist
-wh-boot

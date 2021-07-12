@@ -1,0 +1,12 @@
+
+# 忽略目录
+.DS_Store
+node_modules
+/piblic
+/src
+/testx
+
+# 忽略指定文件
+vue.config.js
+babel.config.js
+*.map
